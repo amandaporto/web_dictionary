@@ -1,0 +1,5 @@
+puts = print something on screen
+gets = prompt user for input
+boom = Mind Blown!
+I'm = Awesome
+committing = what amanda never does

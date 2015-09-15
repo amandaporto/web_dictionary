@@ -11,6 +11,41 @@ class DisplayDictionary < WEBrick::HTTPServlet::AbstractServlet
     response.status = 200
     response.body = %{
       <html>
+      <head>
+        <style>
+          body {
+            background-color: #F1F1F1;
+          }
+          a {
+            color: #696969;
+          }
+          a:visited {
+            color: #696969;
+          }
+          a:hover {
+            color: #151515;
+          }
+          form {
+            padding: 20px 0 0 0;
+          }
+          li {
+            list-style-type: none;
+            padding: 10px 10px;
+            margin: 10px 0;
+            background-color: #FFFFFF;
+            max-width: 90%;
+            border-radius: 3px;
+            border-right: 1px solid #e4e4e4;
+            border-bottom: 1px solid #e4e4e4;
+          }
+          p {
+            color: #273237;
+            font-family: sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+          }
+        </style>
+      </head>
         <body>
           <a href="/add"> To add a word, click here </a>
           <form method="POST" action="/search">
@@ -36,11 +71,37 @@ class AddToDictionary < WEBrick::HTTPServlet::AbstractServlet
     response.status = 200
     response.body = %{
       <html>
+      <head>
+        <style>
+        body {
+          background-color: #F1F1F1;
+        }
+        li {
+          list-style-type: none;
+          padding: 0 0 20px 0;
+        }
+        form {
+          padding: 10px 0 0 0;
+        }
+        .search {
+          color: #273237;
+          font-family: sans-serif;
+          font-size: 14px;
+        }
+        p {
+          color: #273237;
+          font-family: sans-serif;
+          font-size: 30px;
+          font-weight: bold;
+        }
+        </style>
+      </head>
         <body>
+          <p> Let's Add a Word! </p>
           <form method="POST" action="/save">
-            <span>Word</span>
+            <span class="search">Word</span>
             <input name="word"/>
-            <span>Definition</span>
+            <span class="search">Definition</span>
             <input name="definition"/>
             <button type="submit"> Add it! </button>
           </form>
@@ -66,6 +127,19 @@ class SaveToDatabase < WEBrick::HTTPServlet::AbstractServlet
     response.header["Location"] = "/"
     response.body = %{
       <html>
+      <head>
+        <style>
+        body {
+          background-color: #F1F1F1;
+        }
+        p {
+          color: #273237;
+          font-family: sans-serif;
+          font-size: 30px;
+          font-weight: bold;
+        }
+        </style>
+      </head>
         <body>
           <p>Saved!</p>
         </body>
@@ -85,8 +159,44 @@ class SearchDatabase < WEBrick::HTTPServlet::AbstractServlet
     response.status = 200
     response.body = %{
       <html>
+        <head>
+          <style>
+          body {
+            background-color: #F1F1F1;
+          }
+          a {
+            color: #696969;
+          }
+          a:visited {
+            color: #696969;
+          }
+          a:hover {
+            color: #151515;
+          }
+          form {
+            padding: 20px 0 0 0;
+          }
+          li {
+            list-style-type: none;
+            padding: 10px 10px;
+            margin: 10px 0;
+            background-color: #FFFFFF;
+            max-width: 90%;
+            border-radius: 3px;
+            border-right: 1px solid #e4e4e4;
+            border-bottom: 1px solid #e4e4e4;
+          }
+          p {
+            color: #273237;
+            font-family: sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+          }
+          </style>
+        </head>
         <body>
         <a href="/"> Back to full dictionary </a>
+        <p> Search Results </p>
         <p>#{search_html}</p>
         </body>
       </html>
